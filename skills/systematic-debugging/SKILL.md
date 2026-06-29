@@ -211,6 +211,27 @@ You MUST complete each phase before proceeding to the next.
 
    This is NOT a failed hypothesis - this is a wrong architecture.
 
+## Agent-Stack Mode（agent/wrapper 系統專用 — HQ 客製，借自 ECC agent-architecture-audit）
+
+> ⚠️ HQ 客製增段（非 superpowers 原版；superpowers 升級重拉時需重貼）。
+
+**何時切到此模式**：bug 出在「AI agent 包裝層」而非一般程式 ── 典型徵兆：直連 API／playground 正常但透過包裝就壞；後端 log 顯示成功但 UI／前端看到的不一樣（或點數已扣、卻沒產出）；同一輸入時好時壞。
+
+四階段仍適用，但要多查這 4 個「一般除錯會跳過」的 agent 專屬腐敗層：
+
+| 層 | 失效樣態 |
+|---|---|
+| 6 工具選擇 | 該用的工具沒被呼叫（prompt 要求了但程式沒 code-gate 強制） |
+| 10 傳輸/渲染 | 後端答案對，但 UI／API／CLI 把正確答案改壞（兩端不一致） |
+| 11 隱藏修復迴圈 | 背後有 fallback/retry agent 偷跑第二次 LLM |
+| 12 持久化 | 過期狀態／快取產物被當「即時證據」重用 |
+
+**7 個 yes/no 快篩**（任一 yes → 對應失效類）：① 模型能跳過必需工具還是給出答案？→ 工具沒 code-gate ② agent 自己的獨白會變成持久記憶？→ 記憶中毒 ③ 同一資訊同時在 system prompt＋記憶＋歷史？→ context 重複 ④ 平台在送出前跑第二次 LLM？→ 隱藏修復迴圈 ⑤ 同一答案在終端機和 UI 長得不一樣？→ 傳輸層竄改 ⑥ 工具是「建議用」還是「強制用」？→ 路由不可靠 ⑦ 過期/快取產物被當即時證據？→ 持久化污染
+
+**修復順序（code-first）**：① 把必需工具改成程式強制 → ② 收窄/關掉隱藏 retry agent → ③ 去重複 context → ④ 收緊記憶寫入門檻 → ⑤ 減少渲染層竄改 → ⑥ 工具輸出改用 typed JSON 信封（別拿 markdown 散文當內部協定）。
+
+**兩條反模式（對應 Eric 踩過的坑）**：別讓「現在乾淨」抹掉「歷史上髒過」（例：ws-gateway 死了 3 天沒人發現）；別把 markdown 散文當成可信的內部協定。
+
 ## Red Flags - STOP and Follow Process
 
 If you catch yourself thinking:
