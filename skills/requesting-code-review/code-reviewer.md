@@ -2,6 +2,8 @@
 
 Use this template when dispatching a code reviewer subagent.
 
+> HQ 客製：下方 prompt 含「Reviewer Mindset（對抗式）」段（非 superpowers 原版；superpowers 升級重拉需重貼）。
+
 **Purpose:** Review completed work against requirements and code quality standards before it cascades into more work.
 
 ```
