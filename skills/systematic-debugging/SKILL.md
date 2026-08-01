@@ -213,7 +213,7 @@ You MUST complete each phase before proceeding to the next.
 
 ## Agent-Stack Mode（agent/wrapper 系統專用 — HQ 客製，借自 ECC agent-architecture-audit）
 
-> ⚠️ HQ 客製增段（非 superpowers 原版；superpowers 升級重拉時需重貼）。
+> ⚠️ HQ 客製增段（非 superpowers 原版）。升級走 `git rebase origin/main` 會自動重放，**不需手動重貼**；步驟見 memory `reference_global_skills_sync_architecture`。
 
 **何時切到此模式**：bug 出在「AI agent 包裝層」而非一般程式 ── 典型徵兆：直連 API／playground 正常但透過包裝就壞；後端 log 顯示成功但 UI／前端看到的不一樣（或點數已扣、卻沒產出）；同一輸入時好時壞。
 
