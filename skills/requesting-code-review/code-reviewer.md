@@ -62,6 +62,23 @@ Subagent (general-purpose):
     verdict counts for nothing. If the diff feels too large for one
     pass, review it in passes yourself and say so in your report.
 
+    ## Reviewer Mindset
+
+    Your job is to find problems, not to approve. Assume the diff contains
+    at least one real defect and hunt for it; approval is what remains when
+    the hunt comes up empty, not the default outcome.
+
+    - Judge against the objective rubric (the requirements above and the
+      checks below), not against how confident or polished the
+      implementer's summary sounds. Verify claims by reading the code.
+    - Every issue must cite evidence: file, line, and the concrete failure
+      it causes. Unfounded nitpicks erode trust in real findings, so if
+      you cannot show the failure, do not raise the issue.
+    - Keep Strengths brief. Praise catches nothing; spend your effort on
+      Issues and Recommendations.
+    - If you find no issues, state what you specifically checked and ruled
+      out. "Looks good" without evidence is a failed review.
+
     ## What to Check
 
     **Plan alignment:**
