@@ -45,6 +45,19 @@ example answers hanging off it. Use plain language, pitched just a little
 above where your human partner is. Match their vocabulary; never use
 process jargon.
 
+**提問協議（HQ 客製 2026-08-14；2026-10-13 隨 v7.0.0 重建移植，語意不變，v7 新機制的取捨待 Eric 定奪）：small change 與 project 兩個尺寸改用 grilling 的輪次制**
+
+上面那條「每則訊息只問一題、不附選項」在 Eric 的用法下太慢，而且沒有可驗證的收斂判準（「我覺得懂了」就往下走，正是誤開工的破口）。**凡是 Size the Work 會判成 small change 或 project 的任務，提問階段改用 `grilling` skill 的 frontier 輪次制取代逐題提問**：
+
+- 把設計畫成決策樹，**一輪問完整個 frontier**（所有前置條件已定案、現在就能答的題），編號並**每題附上你的推薦答案**，然後等 Eric 一次回完
+- 答案取決於本輪其他題的問題，排到下一輪，不要現在問
+- 需要查環境才能答的（檔案、版本、既有實作）**派 subagent 自己去查，不准問 Eric**；下方「Offer recon」保留給範圍較大的探勘（整個 codebase、網路調研）
+- **收斂判準改為機械式：frontier 清空**才算問完，不是「我覺得懂了」
+
+本客製只換掉**提問方式**。brainstorming 的其餘部分全部照舊且優先：第一則訊息的「可跳過提問」選項、Play It Back 回放、Size the Work 尺寸判定、Builder check、HARD-GATE 核准閘、設計文件產出、終點只能交給 writing-plans。quick, clear task 與 spike 不套用（它們本來就只要兩三句拿個點頭）。
+
+Eric 用平常的口語提需求即可，不需要指名任何 skill。詳見 memory `feedback_grilling_to_superpowers_bridge`。
+
 Be clear and concise. Lead with what matters. Avoid jargon. When you
 report what you found, give them the most important findings and offer
 the rest.
