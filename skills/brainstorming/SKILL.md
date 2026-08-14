@@ -171,6 +171,19 @@ is the whole process.
 - Only one question per message - if a topic needs more exploration, break it into multiple questions
 - Focus on understanding: purpose, constraints, success criteria
 
+**提問協議（HQ 客製 2026-08-14）：bounded 與 architectural 路徑改用 grilling 的輪次制**
+
+上面那條「一次只問一題」在 Eric 的用法下太慢，而且沒有可驗證的收斂判準（「我覺得懂了」就往下走，正是誤開工的破口）。**在 bounded 與 architectural 路徑，提問階段改用 `grilling` skill 的 frontier 輪次制取代逐題提問**：
+
+- 把設計畫成決策樹，**一輪問完整個 frontier**（所有前置條件已定案、現在就能答的題），編號並**每題附上你的推薦答案**，然後等 Eric 一次回完
+- 答案取決於本輪其他題的問題，排到下一輪，不要現在問
+- 需要查環境才能答的（檔案、版本、既有實作）**派 subagent 自己去查，不准問 Eric**
+- **收斂判準改為機械式：frontier 清空**才算問完，不是「我覺得懂了」
+
+本客製只換掉**提問方式**。brainstorming 的其餘部分全部照舊且優先：路徑分級、HARD-GATE 核准閘、spec 檔產出與 User Review Gate、終點只能交給 writing-plans。spike 路徑不套用（它本來就只要兩三句拿個點頭）。
+
+Eric 用平常的口語提需求即可，不需要指名任何 skill。詳見 memory `feedback_grilling_to_superpowers_bridge`。
+
 **Exploring approaches:**
 
 - Propose 2-3 different approaches with trade-offs
