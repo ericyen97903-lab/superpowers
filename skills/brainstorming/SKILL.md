@@ -184,6 +184,8 @@ is the whole process.
 
 Eric 用平常的口語提需求即可，不需要指名任何 skill。詳見 memory `feedback_grilling_to_superpowers_bridge`。
 
+**霧濃度分流（HQ 客製 2026-09-05）**：進入本 skill 前，若任務是一團霧（新領域或沒聽過的工具、Eric 說「看到才知道」「我沒概念」、創作方向還沒定調、接手外部工具或 repo、要動的東西沒 spec 也沒記憶），先走 `explore-unknowns` 的四象限走法，地圖貼回對話並落檔後，再進本 skill 的分級與核准閘；地圖上的決策帳逐條當 spec 的既定條件，OPEN 項在 spec 標「待決」。判準正本：`docs/institution/judgment-rubrics.md` R9。spike 路徑不套用（「能不能做」永遠先跑最便宜的決定性測試）。
+
 **Exploring approaches:**
 
 - Propose 2-3 different approaches with trade-offs
