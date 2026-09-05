@@ -23,6 +23,8 @@ why?
   blue"). This is a quick, clear task. Do it, and say what you did.
 - **Something non-trivial is missing.** Start the conversation.
 
+**霧濃度分流（HQ 客製 2026-09-05；2026-10-13 隨 v7.0.0 重建移植，語意不變）**：進入本 skill 前，若任務是一團霧（新領域或沒聽過的工具、Eric 說「看到才知道」「我沒概念」、創作方向還沒定調、接手外部工具或 repo、要動的東西沒 spec 也沒記憶），先走 `explore-unknowns` 的四象限走法，地圖貼回對話並落檔後，再進本 skill 的提問、Size the Work 與核准閘；地圖上的決策帳逐條當設計文件的既定條件，OPEN 項在文件標「待決」。判準正本：`docs/institution/judgment-rubrics.md` R9。「能不能做」永遠先跑最便宜的決定性測試（spike），不走四象限。
+
 ## Your First Message
 
 Your first message is two things, in this order:
