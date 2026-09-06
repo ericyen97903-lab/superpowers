@@ -174,6 +174,8 @@ git worktree remove "$WORKTREE_PATH"
 git worktree prune  # Self-healing: clean up any stale registrations
 ```
 
+> **HQ 客製（2026-09-06）**：Eric 機器上的 hook `block-dangerous-rm` Tier H 會攔 `git worktree remove`（有無 `--force` 皆同）並請示；只有 session scratchpad 底下的拋棄式 worktree 放行，`.worktrees/` 與 `worktrees/` 是長壽位置，不放行。互動視窗：先 `echo "$WORKTREE_PATH"`，把字面路徑寫進指令再跑，Eric 在請示訊息就看得到要刪哪個，按確認即可。背景或 Orca（跳過權限）視窗：會被硬擋，**把字面路徑與 `git worktree remove <路徑>` 指令原樣回報 Eric 由他跑；禁止用 mv、rm、改名或任何方式搬走目錄來繞過**（那正是 2026-09-03 未提交檔消失的形狀）。升級走 `git rebase origin/main` 會自動重放，不需手動重貼。
+
 **If removal is refused** (`contains modified or untracked files`): the
 worktree holds files that exist nowhere else — uncommitted plans, notes,
 or scratch work. Never `--force` on your own initiative. Show your human
