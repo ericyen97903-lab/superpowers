@@ -79,18 +79,6 @@ You: [Fix progress indicators]
 | "I'll just review the diff myself instead of dispatching a reviewer" | You're the coordinator — reviewing the diff inline burns the context window you need to keep driving the work. Dispatch a reviewer subagent: the diff and the evaluation live in its context, and only the findings come back to you. |
 | "The reviewer needs my whole session history to understand the change" | Hand it precisely crafted context, never your session's history. That keeps the reviewer on the work product, not your thought process. |
 
-## Optional：雙獨立評審・聯集否決門（HQ 客製，借自 ECC santa-method）
-
-> ⚠️ HQ 客製增段（非 superpowers 原版）。升級走 `git rebase origin/main` 會自動重放，**不需手動重貼**。**選用模式，預設不開** ── 它花 2-3 倍 token，只在高風險產出才值得：批量生成的中文廣告文案、法遵/合規敏感內容、要直接上線且沒人逐句看的 production code。
-
-1. 派**兩個**評審 subagent，**同一份 rubric、彼此無共享 context**（各自獨立看同一份產出）。
-2. **聯集否決門**：任一個評審挑出問題 → 當真問題處理，不要當成「兩人不一致、折衷一下」。理由（白話、非話術）：審查裡「漏掉真 bug（偽陰性）」的代價遠大於「誤報（偽陽性）」，所以偏向較嚴格那一方。
-3. **兩個都 PASS 才放行。**
-4. **每輪換新 agent**（不帶前一輪記憶）→ 避免錨定偏誤。
-5. **逃逸率指標**：記「上線後才發現、但審查該抓到的問題數」，目標 0；兩評審同意率太低 = rubric 要收緊。
-
-成本誠實：2-3 倍 token。非高風險產出別開；用 ~15% 抽樣代替全量也行。
-
 ## Red Flags
 
 **Never:**
