@@ -109,17 +109,17 @@ Ask one at a time. Use plain language, pitched just a little above where
 your human partner is. Match their vocabulary; never use process jargon.
 You never need to quote this skill to your human partner.
 
-**提問協議（HQ 客製 2026-08-14；2026-10-13 Eric 拍板「分階段混用」方案，隨 v7.0.0 重建定稿）：開場照 v7，之後改用 grilling 的輪次制，每輪後回放**
+**提問協議（HQ 客製 2026-08-14；2026-10-13 Eric 拍板「分階段混用」；2026-11-18 隨 v7.0.2 對齊：開場與查環境改照上游新版，輪次制與機械式收斂保留）：開場照上游，之後改用 grilling 的輪次制，每輪後回放**
 
-上面那條「每則訊息只問一題、不附選項」修的是「選單牽著人走、人沒真的思考」。Eric 8 月的客製修的是另一個失敗：太慢，而且沒有可驗證的收斂判準（「我覺得懂了」就往下走，正是誤開工的破口）。兩個失敗都要堵，所以分階段：
+上面那條「Ask one at a time」修的是「選單牽著人走、人沒真的思考」。Eric 8 月的客製修的是另一個失敗：太慢，而且沒有可驗證的收斂判準（「我覺得懂了」就往下走，正是誤開工的破口）。兩個失敗都要堵，所以分階段：
 
-1. **開場照 v7**：第一則訊息只有「可跳過提問」那一行加一個開放式問題，不給選單、不附推薦答案，讓 Eric 用自己的話描述。他的話帶出的意圖，選單帶不出來。
-2. **第二則起，凡是 Size the Work 會判成 small change 或 project 的任務，提問改用 `grilling` skill 的 frontier 輪次制**：把設計畫成決策樹，一輪問完整個 frontier（所有前置條件已定案、現在就能答的題），編號並每題附上推薦答案，等 Eric 一次回完。答案取決於本輪其他題的，排到下一輪。推薦答案若是我的推測，要標明是推測，不要包成既定事實（2026-10-01 AI廣告13 的「延續上一支風格」教訓）。
-3. **每輪答完先回放再問下一輪**（v7 的 Play It Back）：用兩三百字講我聽到的這一部分，只有 Eric 說過的才寫成他的，我猜的標成我的猜測，結尾問他哪裡錯、哪裡漏。回放被糾正就重算 frontier。
-4. **需要查環境才能答的**（檔案、版本、既有實作）派 subagent 自己去查，不准問 Eric；下方「Offer recon」保留給範圍較大的探勘（整個 codebase、網路調研）。
-5. **收斂判準是機械式的**：frontier 清空，且最後一段回放 Eric 沒有再糾正，才算問完。不是「我覺得懂了」。
+1. **開場照上游的 Your First Message**（v7.0.2 重寫過，比舊客製的「一行可跳過加一個開放題」好，舊寫法撤掉）：先照 Look Before You Ask 把他指到的檔與相關程式讀懂。他已經講清楚要什麼，就用兩百字左右回放需求、加上查到的事實；他還沒講為什麼要做，只問一個開放題，不給選單。他的話帶出的意圖，選單帶不出來。
+2. **第二則起，凡是 Size the Work 會判成 small change 或 project 的任務，提問改用 `grilling` skill 的 frontier 輪次制**：把設計畫成決策樹，一輪問完整個 frontier（所有前置條件已定案、現在就能答的題），編號並每題附上推薦答案，等 Eric 一次回完。答案取決於本輪其他題的，排到下一輪。**進 frontier 的題先過上游的篩子**：答案會改變要做出來的東西、而且需求與專案都答不了的才問；其餘直接寫成「我的提案加理由」讓他糾正，不佔題號。推薦答案若是我的推測，要標明是推測，不要包成既定事實（2026-10-01 AI廣告13 的「延續上一支風格」教訓）。
+3. **每輪答完先回放再問下一輪**（上游的 Play It Back）：用兩三百字講我聽到的這一部分，只有 Eric 說過的才寫成他的，我補上的寫成我的提案並附理由，結尾問他哪裡錯、哪裡漏。回放被糾正就重算 frontier。
+4. **需要查環境才能答的**（檔案、版本、既有實作）自己去查，不准問 Eric：照上游的 Look Before You Ask 與 Do recon（v7.0.2 已從「先問能不能查」改成「直接查、講查了什麼」）。查的量大不大、要不要派 subagent，照 `docs/institution/model-dispatch.md` 鐵則一派工三條件。
+5. **收斂判準是機械式的**：frontier 清空，且最後一段回放 Eric 沒有再糾正，才算問完。不是「我覺得懂了」。問完照上游進 Lay out the approaches（做法比較自成一則訊息，讓 Eric 選一個），再寫設計文件。
 
-本客製只換掉**提問方式**。其餘照 v7 且優先：Size the Work 尺寸判定、設計文件產出、Builder check、HARD-GATE 核准閘、終點只能交給 writing-plans。quick, clear task 與 spike 不套用（它們本來就只要兩三句拿個點頭）。
+本客製只換掉**提問方式**。其餘照上游且優先：Look Before You Ask、Lay out the approaches、Size the Work 尺寸判定、設計文件產出（v7.0.2 起 small change 也要一份短設計文件）、Builder check、HARD-GATE 核准閘、終點只能交給 writing-plans。quick, clear task 與 spike 不套用（它們本來就只要兩三句拿個點頭）。
 
 Eric 用平常的口語提需求即可，不需要指名任何 skill。詳見 memory `feedback_grilling_to_superpowers_bridge`。
 
